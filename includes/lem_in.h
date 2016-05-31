@@ -19,9 +19,10 @@ typedef struct 		s_data;
 {
 	int 			nb_ants;
 	int				nb_room;
-	
+
 }					t_data;
 
 int				main(int argc, char **argv);
+int				parse(int fd, t_data *data);
 
 #endif

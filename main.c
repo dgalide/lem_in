@@ -15,11 +15,9 @@
 int main(int argc, char **argv)
 {
 	int fd;
-	char *buff;
 	t_data data;
 
 	fd = 0;
-	buff = NULL;
 	data = NULL;
 	if (argc != 2)
 	{
