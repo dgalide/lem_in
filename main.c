@@ -16,9 +16,11 @@ int main(int argc, char **argv)
 {
 	int fd;
 	char *buff;
+	t_data data;
 
 	fd = 0;
 	buff = NULL;
+	data = NULL;
 	if (argc != 2)
 	{
 		ft_putendl("Error");
@@ -27,8 +29,7 @@ int main(int argc, char **argv)
 	else
 	{
 		fd = open(argv[1], O_RDONLY);
-		while (get_next_line(fd, &buff) == 1)
-			ft_putendl(buff);
+		parse(fd, &data);
 	}
 	return (0);
 }

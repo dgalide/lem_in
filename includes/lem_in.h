@@ -15,6 +15,13 @@
 
 # include "../libft/includes/libft.h"
 
+typedef struct 		s_data;
+{
+	int 			nb_ants;
+	int				nb_room;
+	
+}					t_data;
+
 int				main(int argc, char **argv);
 
 #endif
