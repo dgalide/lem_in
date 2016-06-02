@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/31 15:58:54 by dgalide           #+#    #+#             */
-/*   Updated: 2016/05/31 15:58:56 by dgalide          ###   ########.fr       */
+/*   Created: 2016/06/02 14:23:45 by dgalide           #+#    #+#             */
+/*   Updated: 2016/06/02 14:23:47 by dgalide          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem_in.h"
+#include "../includes/lem_in.h"
 
-int main(int argc, char **argv)
+int			is_pipe(char *buff, t_data *data)
 {
-	int fd;
-	t_data *data;
-
-	fd = 0;
-	data = NULL;
-	if (argc != 2)
-	{
-		ft_putendl("ERROR");
-		return (0);
-	}
-	else
-	{
-		data = load_struct();
-		fd = open(argv[1], O_RDONLY);
-		parse(fd, data);
-	}
-	return (0);
+	return (1);
 }

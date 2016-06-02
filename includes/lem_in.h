@@ -14,15 +14,41 @@
 # define LEM_IN
 
 # include "../libft/includes/libft.h"
+# include <limits.h>
+# include <stdio.h>
 
-typedef struct 		s_data;
+typedef struct  	s_room
 {
+	int			end;
+	int			start;
+	int 			matrix_name;
+	char			*name;
+	int				*pos;
+	struct s_room	*next;
+	struct s_room	*previous;
+}					t_room;
+
+typedef struct 		s_data
+{
+	t_room			*room;
+	t_room			*last_room;
 	int 			nb_ants;
 	int				nb_room;
-
+	int 			**matrix;
+	int			end_room_parse;
+	int			end_parse;
+	int			room_start;
+	int			room_end;
 }					t_data;
 
-int				main(int argc, char **argv);
-int				parse(int fd, t_data *data);
+int					main(int argc, char **argv);
+t_data				*load_struct(void);
+int					parse(int fd, t_data *data);
+
+int					is_comment(char *buff, t_data *data);
+int					is_nb_ants(char *buff, t_data *data);
+int					is_room(char *buff, t_data *data);
+int					is_pipe(char *buff, t_data *data);
+int					check_if_digit(char *buff);
 
 #endif

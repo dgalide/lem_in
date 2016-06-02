@@ -13,6 +13,12 @@
 NAME = lem_in
 
 SRC = main.c
+SRC += parse.c
+SRC += struct.c
+SRC += utils_src/is_comment.c
+SRC += utils_src/is_nb_ants.c
+SRC += utils_src/is_room.c
+#SRC += utils_src/is_pipe.c
 
 LIBFT = libft/libft.a
 

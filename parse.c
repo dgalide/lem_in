@@ -12,34 +12,49 @@
 
 #include "includes/lem_in.h"
 
-int			check_validity(char *str)
+static void print_data(t_data *data)
 {
-	
+	t_room *tmp;
+
+	tmp = NULL;
+	if (data->room)
+	{
+		tmp = data->room;
+		while (tmp)
+		{
+			printf("[print_data]--> room_name = {%s} && matrix_name = {%d} && BOOL_end = {%d} && BOOL_start = {%d}", tmp->name, tmp->matrix_name, tmp->end, tmp->end);
+			tmp = tmp->next;
+		}
+
+	}
+}
+
+static int		fill_data(char *buff, t_data *data)
+{
+	if (is_comment(buff, data))
+		ft_putendl(buff);
+	if (!is_nb_ants(buff, data))
+		return (0);
+	if (!is_room(buff, data))
+		return (0);
+/*	else if (!is_pipe(buff, data))
+		return (0);*/
 	return (1);
 }
 
-void		fill_data(char *str, t_data *data)
+int				parse(int fd, t_data *data)
 {
-
-}
-
-int			parse(int fd, t_data *data)
-{
-	char *buff;
-	int ret;
+	char	*buff;
+	int		ret;
 
 	buff = NULL;
-	while ((ret = get_next_line(fd, &str)) == 1)
+	while ((ret = get_next_line(fd, &buff)) == 1)
 	{
-		if (ret == -1)
-			return (ret);
-		else
-		{
-			if (!check_validity(str))
-				return (0);
-			else
-				fill_data(str, data);
-		}
+		printf("\nbuff in parse = {%s}\n", buff);
+		if (buff && !fill_data(buff, data))
+			return (0);
 	}
+	printf("\nfourmis = %d\n", data->nb_ants);
+	print_data(data);
 	return (1);
 }

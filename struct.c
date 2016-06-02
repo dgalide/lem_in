@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/31 15:58:54 by dgalide           #+#    #+#             */
-/*   Updated: 2016/05/31 15:58:56 by dgalide          ###   ########.fr       */
+/*   Created: 2016/06/02 15:32:18 by dgalide           #+#    #+#             */
+/*   Updated: 2016/06/02 15:32:19 by dgalide          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/lem_in.h"
 
-int main(int argc, char **argv)
+t_data 	*load_struct(void)
 {
-	int fd;
 	t_data *data;
 
-	fd = 0;
-	data = NULL;
-	if (argc != 2)
-	{
-		ft_putendl("ERROR");
-		return (0);
-	}
-	else
-	{
-		data = load_struct();
-		fd = open(argv[1], O_RDONLY);
-		parse(fd, data);
-	}
-	return (0);
+	data = (t_data *)malloc(sizeof(t_data));
+	data->nb_ants = 0;
+	data->nb_room = 0;
+	data->end_room_parse = 0;
+	data->end_parse = 0;
+	data->room_start = 0;
+	data->room_end = 0;
+	data->room = NULL;
+	data->last_room = NULL;
+	return (data);
 }

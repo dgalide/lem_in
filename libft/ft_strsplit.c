@@ -32,7 +32,7 @@ char			**ft_strsplit(char const *s, char c)
 		if (s[i] != c)
 		{
 			tab[j] = ft_strsub(&s[i], 0, ft_lenwords(s, c, (j + 1)));
-			i += (ft_lenwords(s, c, (j + 1)) + 1);
+			i += (ft_lenwords(s, c, (j + 1)));
 			j++;
 		}
 	}
