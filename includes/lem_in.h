@@ -19,8 +19,8 @@
 
 typedef struct  	s_room
 {
-	int			end;
-	int			start;
+	int				end;
+	int				start;
 	int 			matrix_name;
 	char			*name;
 	int				*pos;
@@ -35,10 +35,10 @@ typedef struct 		s_data
 	int 			nb_ants;
 	int				nb_room;
 	int 			**matrix;
-	int			end_room_parse;
-	int			end_parse;
-	int			room_start;
-	int			room_end;
+	int				end_room_parse;
+	int				end_parse;
+	int				room_start;
+	int				room_end;
 }					t_data;
 
 int					main(int argc, char **argv);
