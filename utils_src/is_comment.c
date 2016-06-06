@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-int			is_comment(char *buff, t_data *data)
+int			comment_handler(char *buff, t_data *data)
 {
 	if (buff)
 	{
@@ -26,7 +26,7 @@ int			is_comment(char *buff, t_data *data)
 			data->room_start = 1;
 			return (1);
 		}
-		else if (buff[0] == '#')
+		else
 			return (1);
 	}
 	return (1);

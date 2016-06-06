@@ -22,7 +22,7 @@ static void print_data(t_data *data)
 		tmp = data->room;
 		while (tmp)
 		{
-			printf("[print_data]--> room_name = {%s} && matrix_name = {%d} && BOOL_end = {%d} && BOOL_start = {%d}", tmp->name, tmp->matrix_name, tmp->end, tmp->end);
+			printf("[print_data]--> room_name = {%s} && matrix_name = {%d} && BOOL_end = {%d} && BOOL_start = {%d}\n", tmp->name, tmp->matrix_name, tmp->end, tmp->end);
 			tmp = tmp->next;
 		}
 
@@ -31,12 +31,12 @@ static void print_data(t_data *data)
 
 static int		fill_data(char *buff, t_data *data)
 {
-	if (is_comment(buff, data))
-		ft_putendl(buff);
-	if (!is_nb_ants(buff, data))
-		return (0);
-	if (!is_room(buff, data))
-		return (0);
+	if (buff && buff[0] == '#')
+		comment_handler(buff, data);
+	else if (check_if_digit(buff))
+		is_nb_ants(buff, data);
+	else if (ft_strchr(buff, '-') == NULL && ft_countwords(buff, ' ') == 3)
+		add_room(buff, data);
 /*	else if (!is_pipe(buff, data))
 		return (0);*/
 	return (1);

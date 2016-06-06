@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "includes/libft.h"
+#include <stdio.h>
 
 int		ft_countwords(const char *s, char c)
 {
@@ -19,15 +20,15 @@ int		ft_countwords(const char *s, char c)
 
 	i = 0;
 	cp = 0;
-	while (s[i] != 0)
+	while (s && s[i])
 	{
 		if (s[i] != c)
 		{
 			cp++;
-			while (s[i] != c && s[i] != 0)
+			while (s[i] && s[i] != c)
 				i++;
 		}
-		if (s[i] != 0)
+		else
 			i++;
 	}
 	return (cp);

@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "includes/libft.h"
-
+#include <stdio.h>
+/*
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
@@ -37,5 +38,49 @@ char			**ft_strsplit(char const *s, char c)
 		}
 	}
 	tab[j] = NULL;
+	return (tab);
+}
+*/
+static int		len_until_chr(char *s, int index, char c)
+{
+	int n;
+
+	n = 0;
+	while (s && s[index] && s[index] != c)
+	{
+		n += 1;
+		index += 1;
+	}
+	return (n);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	char **tab;
+	int i;
+	int j;
+	int l;
+
+	i = 0;
+	j = 0;
+	l = ft_countwords(s, c);
+	if (!s)
+		return (NULL);
+	tab = (char **)malloc(sizeof(char *) * (l + 1));
+	tab[l] = NULL;
+	printf("SPLIT, buff == {%s}\n", s);
+	while (s && s[i])
+	{
+		if (s[i] != c)
+		{
+			printf("SPLIT, buff[i] == {%c}\n", s[i]);
+			tab[j] = ft_strsub(s, i, len_until_chr((char *)s, i, c));
+			printf("SPLIT, sub OK\n");
+			i += ft_strlen((char *)tab[j]);
+			j += 1;
+		}
+		else
+			i += 1;
+	}
 	return (tab);
 }

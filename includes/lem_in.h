@@ -45,9 +45,9 @@ int					main(int argc, char **argv);
 t_data				*load_struct(void);
 int					parse(int fd, t_data *data);
 
-int					is_comment(char *buff, t_data *data);
+int					comment_handler(char *buff, t_data *data);
 int					is_nb_ants(char *buff, t_data *data);
-int					is_room(char *buff, t_data *data);
+void				add_room(char *buff, t_data *data);
 int					is_pipe(char *buff, t_data *data);
 int					check_if_digit(char *buff);
 
