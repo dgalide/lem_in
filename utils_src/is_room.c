@@ -29,6 +29,7 @@ int		add_room(char *buff, t_data *data)
 	data->room_start = 0;
 	room->matrix_name = (data->last_room) ? data->last_room->matrix_name + 1 : 0;
 	room->pos = (int *)malloc(sizeof(int) * 2);
+	data->nb_room += 1;
 	if (!data->room)
 	{
 		data->room = room;

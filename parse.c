@@ -22,7 +22,7 @@ static void print_data(t_data *data)
 		tmp = data->room;
 		while (tmp)
 		{
-			printf("[print_data]--> room_name = {%s} && matrix_name = {%d} && BOOL_end = {%d} && BOOL_start = {%d}\n", tmp->name, tmp->matrix_name, tmp->end, tmp->start);
+			printf("[print_data]--> room_name = {%s} && matrix_name = {%d} && BOOL_end = {%d} && BOOL_start = {%d} && nb_room = {%d}\n", tmp->name, tmp->matrix_name, tmp->end, tmp->start, data->nb_room);
 			tmp = tmp->next;
 		}
 
