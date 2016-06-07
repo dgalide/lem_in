@@ -12,6 +12,17 @@
 
 #include "../includes/lem_in.h"
 
+int		check_room(char **buff)
+{
+	if (ft_strchr(buff[0], 'L') != NULL)
+		return (0);
+	if (check_if_digit(buff[1]) == 0)
+		return (0);
+	if (check_if_digit(buff[2]) == 0)
+		return (0);
+	return (1);
+}
+
 int		add_room(char *buff, t_data *data)
 {
 	t_room *room;
@@ -28,6 +39,8 @@ int		add_room(char *buff, t_data *data)
 	{
 		printf("ADD_ROOM, buff = {%s} && BOOL_END = %d && BOOL_START = %d\n", buff, data->room_end, data->room_start);
 		tmp = ft_strsplit(buff, ' ');
+		if (check_room(tmp) == 0)
+			return (0);
 		room = (t_room *)malloc(sizeof(t_room));
 		room->next = NULL;
 		room->previous = NULL;

@@ -36,11 +36,20 @@ static int		fill_data(char *buff, t_data *data)
 		if (buff[0] == '#')
 			comment_handler(buff, data);
 		else if (check_if_digit(buff))
-			is_nb_ants(buff, data);
+		{
+			if (is_nb_ants(buff, data) == 0)
+				return (0);
+		}
 		else if (ft_strchr(buff, '-') == NULL && ft_countwords(buff, ' ') == 3)
-			add_room(buff, data);
+		{
+			if (add_room(buff, data) == 0)
+				return (0);
+		}
 		else if (ft_strchr(buff, '-') != NULL && ft_countwords(buff, '-') == 2)
-			is_pipe(buff, data);
+		{
+			if(is_pipe(buff, data) == 0)
+				return (0);
+		}
 		else
 			process(data);
 	}	
