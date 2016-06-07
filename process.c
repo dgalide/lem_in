@@ -15,4 +15,5 @@
 void		process(t_data *data)
 {
 	printf("PROCESS, data->nb_ants == {%d}\n", data->nb_ants);
+	exit(3);
 }
