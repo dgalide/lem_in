@@ -32,7 +32,9 @@ int			is_nb_ants(char *buff, t_data *data)
 	int tmp2;
 
 	tmp = NULL;
-	if (check_if_digit(buff))
+	if (data->parse_ants == 1)
+		process(data);
+	else if (check_if_digit(buff))
 	{
 		tmp2 = ft_atoi(buff);
 		tmp = ft_itoa(tmp2);
@@ -41,6 +43,7 @@ int			is_nb_ants(char *buff, t_data *data)
 		if (tmp2 > INT_MAX)
 			return (0);
 		data->nb_ants = tmp2;
+		data->parse_ants = 1;
 	}
 	return (1);
 }

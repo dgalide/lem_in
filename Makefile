@@ -18,7 +18,8 @@ SRC += struct.c
 SRC += utils_src/is_comment.c
 SRC += utils_src/is_nb_ants.c
 SRC += utils_src/is_room.c
-#SRC += utils_src/is_pipe.c
+SRC += utils_src/is_pipe.c
+SRC += process.c
 
 LIBFT = libft/libft.a
 

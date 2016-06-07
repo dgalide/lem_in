@@ -25,5 +25,7 @@ t_data 	*load_struct(void)
 	data->room_end = 0;
 	data->room = NULL;
 	data->last_room = NULL;
+	data->parse_ants = 0;
+	data->parse_room = 0;
 	return (data);
 }

@@ -31,17 +31,19 @@ static void print_data(t_data *data)
 
 static int		fill_data(char *buff, t_data *data)
 {
-	if (buff && buff[0] == '#')
-		comment_handler(buff, data);
-	else if (check_if_digit(buff))
-		is_nb_ants(buff, data);
-	else if (ft_strchr(buff, '-') == NULL && ft_countwords(buff, ' ') == 3)
-	{
-		if (add_room(buff, data) == 0)
-			return (0);
-	}
-/*	else if (!is_pipe(buff, data))
-		return (0);*/
+	if (buff)
+	{	
+		if (buff[0] == '#')
+			comment_handler(buff, data);
+		else if (check_if_digit(buff))
+			is_nb_ants(buff, data);
+		else if (ft_strchr(buff, '-') == NULL && ft_countwords(buff, ' ') == 3)
+			add_room(buff, data);
+		else if (ft_strchr(buff, '-') != NULL && ft_countwords(buff, '-') == 2)
+			is_pipe(buff, data);
+		else
+			process(data);
+	}	
 	return (1);
 }
 

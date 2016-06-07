@@ -68,14 +68,11 @@ char			**ft_strsplit(char const *s, char c)
 		return (NULL);
 	tab = (char **)malloc(sizeof(char *) * (l + 1));
 	tab[l] = NULL;
-	printf("SPLIT, buff == {%s}\n", s);
 	while (s && s[i])
 	{
 		if (s[i] != c)
 		{
-			printf("SPLIT, buff[i] == {%c}\n", s[i]);
 			tab[j] = ft_strsub(s, i, len_until_chr((char *)s, i, c));
-			printf("SPLIT, sub OK\n");
 			i += ft_strlen((char *)tab[j]);
 			j += 1;
 		}

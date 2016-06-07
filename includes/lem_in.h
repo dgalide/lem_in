@@ -39,11 +39,14 @@ typedef struct 		s_data
 	int				end_parse;
 	int				room_start;
 	int				room_end;
+	int				parse_ants;
+	int 			parse_room;
 }					t_data;
 
 int					main(int argc, char **argv);
 t_data				*load_struct(void);
 int					parse(int fd, t_data *data);
+void				process(t_data *data);
 
 int					comment_handler(char *buff, t_data *data);
 int					is_nb_ants(char *buff, t_data *data);

@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 		data = load_struct();
 		fd = open(argv[1], O_RDONLY);
 		parse(fd, data);
+		process(data);
 	}
 	return (0);
 }
