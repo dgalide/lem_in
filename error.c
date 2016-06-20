@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.c                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/02 15:32:18 by dgalide           #+#    #+#             */
-/*   Updated: 2016/06/02 15:32:19 by dgalide          ###   ########.fr       */
+/*   Created: 2016/06/17 18:16:44 by dgalide           #+#    #+#             */
+/*   Updated: 2016/06/17 18:16:45 by dgalide          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/lem_in.h"
 
-t_data 	*load_struct(void)
+void		end_del(t_data *data)
 {
-	t_data *data;
+	free(data->matrix);
+}
 
-	data = (t_data *)malloc(sizeof(t_data));
-	data->nb_ants = 0;
-	data->nb_room = 0;
-	data->end_room_parse = 0;
-	data->end_parse = 0;
-	data->room_start = 0;
-	data->room_end = 0;
-	data->room = NULL;
-	data->last_room = NULL;
-	data->parse_ants = 0;
-	data->parse_room = 0;
-	data->matrix = NULL;
-	return (data);
+void		error_exit(t_data *data, bool error)
+{
+	end_del(data);
+	if (error == 1)
+		ft_putendl("ERROR");
+	exit(3);
 }

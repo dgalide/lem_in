@@ -47,7 +47,7 @@ static int		fill_data(char *buff, t_data *data)
 		}
 		else if (ft_strchr(buff, '-') != NULL && ft_countwords(buff, '-') == 2)
 		{
-			if(is_pipe(buff, data) == 0)
+			if(add_pipe(buff, data) == 0)
 				return (0);
 		}
 		else
@@ -66,8 +66,9 @@ int				parse(int fd, t_data *data)
 	{
 		printf("\nbuff in parse = {%s}\n", buff);
 		if (buff && !fill_data(buff, data))
-			return (0);
+			process(data);
 	}
+	process(data);
 	printf("\nfourmis = %d\n", data->nb_ants);
 	print_data(data);
 	return (1);

@@ -14,6 +14,6 @@
 
 void		process(t_data *data)
 {
-	printf("PROCESS, data->nb_ants == {%d}\n", data->nb_ants);
+	printf("PROCESS, nb room == {%d}\n", data->nb_room);
 	exit(3);
 }

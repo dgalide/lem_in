@@ -51,7 +51,7 @@ void				process(t_data *data);
 int					comment_handler(char *buff, t_data *data);
 int					is_nb_ants(char *buff, t_data *data);
 int					add_room(char *buff, t_data *data);
-int					is_pipe(char *buff, t_data *data);
+int					add_pipe(char *buff, t_data *data);
 int					check_if_digit(char *buff);
 
 #endif
