@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-int		check_room(char **buff)
+static int			check_room(char **buff)
 {
 	if (ft_strchr(buff[0], 'L') != NULL)
 		return (0);
@@ -23,51 +23,54 @@ int		check_room(char **buff)
 	return (1);
 }
 
-int		add_room(char *buff, t_data *data)
+static void			add_room_ext(t_data *data, t_room *room)
 {
-	t_room *room;
-	char **tmp;
+	if (!data->room)
+	{
+		data->room = room;
+		data->last_room = room;
+	}
+	else
+	{
+		room->previous = data->last_room;
+		data->last_room->next = room;
+		data->last_room = room;
+	}
+}
+
+static void			load_new_room(t_data *data, char **tmp, t_room *room)
+{
+	room->matrix_name =
+	(data->last_room) ? data->last_room->matrix_name + 1 : 0;
+	room->next = NULL;
+	room->previous = NULL;
+	room->name = ft_strdup(tmp[0]);
+	room->start = (data->room_start) ? 1 : 0;
+	room->end = (data->room_end) ? 1 : 0;
+}
+
+int					add_room(char *buff, t_data *data)
+{
+	t_room			*room;
+	char			**tmp;
 
 	room = NULL;
 	tmp = NULL;
 	if (data->parse_ants == 0 || data->parse_room == 1)
-	{
-		error_exit(data, 1);
 		return (0);
-	}
 	else
 	{
-		printf("ADD_ROOM, buff = {%s} && BOOL_END = %d && BOOL_START = %d\n", buff, data->room_end, data->room_start);
 		tmp = ft_strsplit(buff, ' ');
 		if (check_room(tmp) == 0)
 			error_exit(data, 1);
 		room = (t_room *)malloc(sizeof(t_room));
-		room->matrix_name = (data->last_room) ? data->last_room->matrix_name + 1 : 0;
-		room->next = NULL;
-		room->previous = NULL;
-		room->name = ft_strdup(tmp[0]);
-		room->start = (data->room_start) ? 1 : 0;
-		room->end = (data->room_end) ? 1 : 0;
+		load_new_room(data, tmp, room);
 		if (data->room_start)
 			data->start_cursor = room->matrix_name;
 		data->room_end = 0;
 		data->room_start = 0;
-		room->pos = (int *)malloc(sizeof(int) * 2);
-		room->pos[0] = ft_atoi(tmp[1]);
-		room->pos[1] = ft_atoi(tmp[2]);
 		data->nb_room += 1;
-		if (!data->room)
-		{
-			data->room = room;
-			data->last_room = room;
-			return (1);
-		}
-		else
-		{
-			room->previous = data->last_room;
-			data->last_room->next = room;
-			data->last_room = room;
-			return (1);
-		}
+		add_room_ext(data, room);
+		return (1);
 	}
 }

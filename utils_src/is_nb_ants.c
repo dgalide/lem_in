@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-int	check_if_digit(char *buff)
+int			check_if_digit(char *buff)
 {
 	int i;
 
@@ -28,8 +28,8 @@ int	check_if_digit(char *buff)
 
 int			is_nb_ants(char *buff, t_data *data)
 {
-	char *tmp;
-	int tmp2;
+	char	*tmp;
+	int		tmp2;
 
 	tmp = NULL;
 	if (data->parse_ants == 1)

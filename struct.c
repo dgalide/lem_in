@@ -12,7 +12,7 @@
 
 #include "includes/lem_in.h"
 
-t_data 	*load_struct(void)
+t_data		*load_struct(void)
 {
 	t_data *data;
 

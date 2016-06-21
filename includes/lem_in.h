@@ -51,6 +51,10 @@ t_data				*load_struct(void);
 int					parse(int fd, t_data *data);
 void				process(t_data *data, int room, int cursor);
 void				error_exit(t_data *data, int error);
+int					*add_to_cur_path(int room, int **cur_path);
+int					check_path(int cursor, int *path);
+void				save_path(t_data *data);
+int					check_end(t_data *data, int room);
 
 int					comment_handler(char *buff, t_data *data);
 int					is_nb_ants(char *buff, t_data *data);
