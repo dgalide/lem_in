@@ -12,7 +12,12 @@
 
 #include "includes/lem_in.h"
 
-int		main(int argc, char **argv)
+static void		graphics_representation(t_data *data)
+{
+	                   
+}
+
+int				main(int argc, char **argv)
 {
 	int		fd;
 	t_data	*data;
@@ -34,7 +39,7 @@ int		main(int argc, char **argv)
 		if (!data->final_path)
 			error_exit(data, 1);
 		else
-			error_exit(data, 0);
+			graphics_representation(data);
 	}
 	return (0);
 }
