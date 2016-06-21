@@ -55,6 +55,7 @@ int					*add_to_cur_path(int room, int **cur_path);
 int					check_path(int cursor, int *path);
 void				save_path(t_data *data);
 int					check_end(t_data *data, int room);
+void				print_path(int *path);
 
 int					comment_handler(char *buff, t_data *data);
 int					is_nb_ants(char *buff, t_data *data);

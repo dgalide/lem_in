@@ -34,9 +34,30 @@ void		reset_path(t_data *data)
 	data->cur_path[1] = data->start_cursor;
 }
 
-void		process_ext(t_data *data, int room, int cursor)
+void		process_ext(t_data *data, int *cursor)
 {
-
+	if (check_path((*cursor), data->cur_path) == 1)
+		(*cursor)++;
+	else
+	{
+		if (check_end(data, (*cursor)) == 1)
+		{
+			data->cur_path = add_to_cur_path((*cursor), &(data->cur_path));
+			save_path(data);
+			printf("END // (*cursor) = {%d}\n", (*cursor));
+			print_path(data->cur_path);
+			(*cursor)++;
+		}
+		else
+		{
+			printf("RECURSIVE, (*cursor) == {%d}\n", (*cursor));
+			data->cur_path = add_to_cur_path((*cursor), &(data->cur_path));
+			print_path(data->cur_path);
+			process(data, (*cursor), 0);
+			data->cur_path[0] -= 1;
+			(*cursor)++;
+		}
+	}
 }
 
 void		process(t_data *data, int room, int cursor)
@@ -53,39 +74,12 @@ void		process(t_data *data, int room, int cursor)
 		j = data->cur_path[0] - 1;
 		if (j > 1 && cursor == data->cur_path[j - 1])
 			cursor++;
-		if (data->matrix[cursor][room] == 1)
-		{
-			if (check_path(cursor, data->cur_path) == 1)
-				cursor++;
-			else
-			{
-				if (check_end(data, cursor) == 1)
-				{
-					data->cur_path = add_to_cur_path(cursor, &(data->cur_path));
-					save_path(data);
-					reset_path(data);
-					printf("END // cursor = {%d}\n", cursor);
-					print_path(data->cur_path);
-					cursor++;
-				}
-				else
-				{
-					printf("RECURSIVE, cursor == {%d}\n", cursor);
-					data->cur_path = add_to_cur_path(cursor, &(data->cur_path));
-					print_path(data->cur_path);
-					process(data, cursor, 0);
-					data->cur_path[0] -= 1;
-					cursor++;
-				}
-			}
-		}
+		if (cursor < data->nb_room && data->matrix[cursor][room] == 1)
+			process_ext(data, &cursor);
 		else
 			cursor++;
+		if (room == data->start_cursor && cursor + 1 == data->nb_room)
+			printf("ALLOHHA\n");
 	}
-	printf("END PROCESS... EXIT");
-	print_path(data->final_path);
-	if (!data->final_path)
-		error_exit(data, 1);
-	else
-		error_exit(data, 0);
+	printf("END PROCESS...");
 }

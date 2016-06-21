@@ -30,6 +30,11 @@ int		main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		parse(fd, data);
 		process(data, data->start_cursor, 0);
+		print_path(data->final_path);
+		if (!data->final_path)
+			error_exit(data, 1);
+		else
+			error_exit(data, 0);
 	}
 	return (0);
 }
