@@ -20,6 +20,7 @@ SRC += utils_src/is_nb_ants.c
 SRC += utils_src/is_room.c
 SRC += utils_src/is_pipe.c
 SRC += process.c
+SRC += error.c
 
 LIBFT = libft/libft.a
 

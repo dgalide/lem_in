@@ -28,5 +28,7 @@ t_data 	*load_struct(void)
 	data->parse_ants = 0;
 	data->parse_room = 0;
 	data->matrix = NULL;
+	data->cur_path = NULL;
+	data->final_path = NULL;
 	return (data);
 }

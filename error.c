@@ -17,7 +17,7 @@ void		end_del(t_data *data)
 	free(data->matrix);
 }
 
-void		error_exit(t_data *data, bool error)
+void		error_exit(t_data *data, int error)
 {
 	end_del(data);
 	if (error == 1)

@@ -12,10 +12,10 @@
 
 #include "includes/lem_in.h"
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-	int fd;
-	t_data *data;
+	int		fd;
+	t_data	*data;
 
 	fd = 0;
 	data = NULL;
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 		data = load_struct();
 		fd = open(argv[1], O_RDONLY);
 		parse(fd, data);
-		process(data);
+		process(data, data->start_cursor, 0);
 	}
 	return (0);
 }

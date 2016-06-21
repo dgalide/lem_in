@@ -47,11 +47,11 @@ int			add_pipe(char *buff, t_data *data)
 	int j;
 
 	tmp = ft_strsplit(buff, '-');
+	if (ft_strequ(tmp[0], tmp[1]) == 1)
+		error_exit(data, 1);
 	data->parse_room = 1;
 	i = -1;
 	j = 0;
-	if (is_valid_pipe(tmp, data) == 0)
-		return (0);
 	if (!data->matrix)
 	{
 		data->matrix = (int **)malloc(sizeof(int *) * data->nb_room);
@@ -66,11 +66,10 @@ int			add_pipe(char *buff, t_data *data)
 			i++;
 		}
 	}
-	else
-	{
-		data->matrix[find_index(tmp[0], data)][find_index(tmp[1], data)] = 1;
-		data->matrix[find_index(tmp[1], data)][find_index(tmp[0], data)] = 1;
-	}
+	if (is_valid_pipe(tmp, data) == 0)
+		error_exit(data, 1);
+	data->matrix[find_index(tmp[0], data)][find_index(tmp[1], data)] = 1;
+	data->matrix[find_index(tmp[1], data)][find_index(tmp[0], data)] = 1;
 	printf("IS_PIPE, buff == {%s} && data->nb_ants == {%d}\n", buff, data->nb_ants);
 	return (1);
 }
