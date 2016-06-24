@@ -23,7 +23,6 @@ typedef struct  	s_room
 	int				start;
 	int 			matrix_name;
 	char			*name;
-	int				*pos;
 	struct s_room	*next;
 	struct s_room	*previous;
 }					t_room;
@@ -44,6 +43,7 @@ typedef struct 		s_data
 	int				*cur_path;
 	int				*final_path;
 	int				start_cursor;
+	char			*data;
 }					t_data;
 
 int					main(int argc, char **argv);

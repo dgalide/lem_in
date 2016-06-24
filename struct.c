@@ -30,5 +30,6 @@ t_data		*load_struct(void)
 	data->matrix = NULL;
 	data->cur_path = NULL;
 	data->final_path = NULL;
+	data->data = NULL;
 	return (data);
 }

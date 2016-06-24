@@ -12,6 +12,20 @@
 
 #include "../includes/lem_in.h"
 
+static int			check_if_exist(t_data *data, char *name)
+{
+	t_room *tmp;
+
+	tmp = data->room;
+	while (tmp)
+	{
+		if (ft_strequ(tmp->name, name) == 1)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 static int			check_room(char **buff)
 {
 	if (ft_strchr(buff[0], 'L') != NULL)
@@ -62,6 +76,8 @@ int					add_room(char *buff, t_data *data)
 	{
 		tmp = ft_strsplit(buff, ' ');
 		if (check_room(tmp) == 0)
+			error_exit(data, 1);
+		if (check_if_exist(data, tmp[0]) == 0)
 			error_exit(data, 1);
 		room = (t_room *)malloc(sizeof(t_room));
 		load_new_room(data, tmp, room);

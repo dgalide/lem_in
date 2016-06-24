@@ -120,7 +120,7 @@ int				main(int argc, char **argv)
 		error_exit(data, 1);
 	else	
 	{
-		ft_putchar('\n');
+		ft_putendl(data->data);
 		print_solution(data);
 		error_exit(data, 0);
 	}

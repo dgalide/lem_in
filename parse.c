@@ -42,15 +42,22 @@ static int		fill_data(char *buff, t_data *data)
 int				parse(int fd, t_data *data)
 {
 	char	*buff;
+	char	*tmp;
 	int		ret;
 
 	buff = NULL;
 	ret = 0;
+	tmp = ft_strnew(1);
+	tmp[0] = '\n';
 	while ((ret = get_next_line(fd, &buff)) == 1)
 	{
 		if (buff && !fill_data(buff, data))
+		{
+			ft_memdel((void **)&tmp);
 			return (0);
-		ft_putendl(buff);
+		}
+		buff = ft_strjoin_free(&buff, &tmp, 1, 0);
+		data->data = ft_strjoin_free(&data->data, &buff, 1, 1);
 	}
 	return (1);
 }

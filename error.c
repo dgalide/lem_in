@@ -14,13 +14,30 @@
 
 void		end_del(t_data *data)
 {
-	free(data->matrix);
+	t_room *tmp;
+	t_room *tmp2;
+
+	tmp = data->last_room;
+	while (tmp)
+	{
+		ft_memdel((void **)&tmp->name);
+		tmp2 = tmp->previous;
+		free(tmp);
+		tmp = tmp2;
+	}
+	ft_memdel((void **)&data->cur_path);
+	ft_memdel((void **)&data->final_path);
+	ft_memdel((void **)&data->data);
+	free(data);
 }
 
 void		error_exit(t_data *data, int error)
 {
-	end_del(data);
-	if (error == 1)
+	if (error)
+	{
+		ft_putendl(data->data);
 		ft_putendl("ERROR");
+	}
+	end_del(data);
 	exit(3);
 }
