@@ -44,15 +44,11 @@ void		process_ext(t_data *data, int *cursor)
 		{
 			data->cur_path = add_to_cur_path((*cursor), &(data->cur_path));
 			save_path(data);
-			printf("END // (*cursor) = {%d}\n", (*cursor));
-			print_path(data->cur_path);
 			(*cursor)++;
 		}
 		else
 		{
-			printf("RECURSIVE, (*cursor) == {%d}\n", (*cursor));
 			data->cur_path = add_to_cur_path((*cursor), &(data->cur_path));
-			print_path(data->cur_path);
 			process(data, (*cursor), 0);
 			data->cur_path[0] -= 1;
 			(*cursor)++;
@@ -78,8 +74,5 @@ void		process(t_data *data, int room, int cursor)
 			process_ext(data, &cursor);
 		else
 			cursor++;
-		if (room == data->start_cursor && cursor + 1 == data->nb_room)
-			printf("ALLOHHA\n");
 	}
-	printf("END PROCESS...");
 }

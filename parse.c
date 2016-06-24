@@ -48,9 +48,9 @@ int				parse(int fd, t_data *data)
 	ret = 0;
 	while ((ret = get_next_line(fd, &buff)) == 1)
 	{
-		ft_putendl(buff);
 		if (buff && !fill_data(buff, data))
 			return (0);
+		ft_putendl(buff);
 	}
 	return (1);
 }
