@@ -12,20 +12,6 @@
 
 #include "includes/lem_in.h"
 
-void		print_path(int *path)
-{
-	int i;
-
-	i = 0;
-	while (i < path[0])
-	{
-		ft_putnbr(path[i]);
-		ft_putchar(' ');
-		i++;
-	}
-	ft_putchar('\n');
-}
-
 void		reset_path(t_data *data)
 {
 	ft_memdel((void **)&data->cur_path);

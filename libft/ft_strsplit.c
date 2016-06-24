@@ -31,7 +31,7 @@ char			**ft_strsplit(char const *s, char c)
 	char	**tab;
 	int		i;
 	int		j;
-	int			l;
+	int		l;
 
 	i = 0;
 	j = 0;

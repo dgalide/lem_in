@@ -56,9 +56,7 @@ void			save_path(t_data *data)
 			data->final_path[i] = data->cur_path[i];
 			i++;
 		}
-		
 	}
-
 }
 
 int				check_end(t_data *data, int room)
