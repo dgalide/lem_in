@@ -29,7 +29,7 @@ void	print_it(t_data *data, int index_ant, int room)
 		tmp = tmp->next;
 	}
 	ft_putchar('L');
-	ft_putnbr(index_ant);
+	ft_putnbr(index_ant + 1);
 	ft_putchar('-');
 	ft_putstr(name);
 	ft_putchar(' ');
@@ -66,7 +66,7 @@ void	load_data(int len_path, int **path, int nb_ants, int ***ants)
 	while (++i < nb_ants)
 	{
 		(*ants)[i] = (int *)malloc(sizeof(int) * 1);
-		(*ants)[i][0] = 0;
+		(*ants)[i][0] = 1;
 	}
 }
 

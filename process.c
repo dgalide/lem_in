@@ -51,14 +51,17 @@ void		process(t_data *data, int room, int cursor)
 	j = 0;
 	if (!data->cur_path)
 		reset_path(data);
-	while (cursor < data->nb_room)
+	if (data->matrix)
 	{
-		j = data->cur_path[0] - 1;
-		if (j > 1 && cursor == data->cur_path[j - 1])
-			cursor++;
-		if (cursor < data->nb_room && data->matrix[cursor][room] == 1)
-			process_ext(data, &cursor);
-		else
-			cursor++;
+		while (cursor < data->nb_room)
+		{
+			j = data->cur_path[0] - 1;
+			if (j > 1 && cursor == data->cur_path[j - 1])
+				cursor++;
+			if (cursor < data->nb_room && data->matrix[cursor][room] == 1)
+				process_ext(data, &cursor);
+			else
+				cursor++;
+		}
 	}
 }

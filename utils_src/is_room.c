@@ -76,9 +76,9 @@ int					add_room(char *buff, t_data *data)
 	{
 		tmp = ft_strsplit(buff, ' ');
 		if (check_room(tmp) == 0)
-			error_exit(data, 1);
+			return (0);
 		if (check_if_exist(data, tmp[0]) == 0)
-			error_exit(data, 1);
+			return (0);
 		room = (t_room *)malloc(sizeof(t_room));
 		load_new_room(data, tmp, room);
 		if (data->room_start)

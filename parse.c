@@ -17,7 +17,7 @@ static int		fill_data(char *buff, t_data *data)
 	if (buff[0] == '#')
 	{
 		if (comment_handler(buff, data) == 0)
-			error_exit(data, 1);
+			return (0);
 	}
 	else if (check_if_digit(buff))
 	{
@@ -35,7 +35,7 @@ static int		fill_data(char *buff, t_data *data)
 			return (0);
 	}
 	else
-		error_exit(data, 1);
+		return (0);
 	return (1);
 }
 

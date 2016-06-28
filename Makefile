@@ -50,4 +50,4 @@ fclean: clean
 	make fclean -C libft
 	rm -rf $(NAME)
 
-.PHONY: all re clean fclean
+.PHONY: all re clean fclean .c.o
